@@ -8,14 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    var networkService = NetworkService()
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack{
+            HeroList(heroQuery: networkService.heroesResult)
+                .navigationTitle("Heroes List")
+        }.task {
+            do{
+                print("making request")
+                try await networkService.fetchHeroes()
+            }catch{}
         }
-        .padding()
+        .refreshable {
+            Task{
+                do{
+                    print("making request")
+                    try await networkService.fetchHeroes()
+                }catch{}            }
+        }
     }
 }
 
