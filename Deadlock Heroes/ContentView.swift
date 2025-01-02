@@ -24,7 +24,8 @@ struct ContentView: View {
                 do{
                     print("making request")
                     try await networkService.fetchHeroes()
-                }catch{}            }
+                }catch{}
+            }
         }
     }
 }

@@ -11,13 +11,9 @@ struct HeroIconImageComponent: View {
     let hero: Hero
     var body: some View {
         if let imageUrl = hero.images.heroIcon{
-            AsyncImage(url: URL(string:imageUrl)){image in
-                image.resizable()
-                    .frame(width: 65, height: 65)
-                    .clipShape(.circle)
-            }placeholder: {
-                ProgressView()
-            }
+            CacheImage(url: URL(string: imageUrl))
+                .frame(width: 65, height: 65)
+                .clipShape(.circle)
         }else{
             Image("No_Image_Available")
                 .resizable()

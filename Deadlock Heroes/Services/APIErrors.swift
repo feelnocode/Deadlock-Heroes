@@ -10,4 +10,7 @@ import Foundation
 enum APIErrors: Error {
     case invalidResponseCode
     case decodingError
+    case invalidUrl
+    case badImage
+    case imageDownloadError
 }
