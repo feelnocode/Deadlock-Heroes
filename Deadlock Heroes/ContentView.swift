@@ -11,21 +11,21 @@ struct ContentView: View {
     var networkService = NetworkService()
     var body: some View {
         NavigationStack{
-            HeroList(heroQuery: networkService.heroesResult)
+            HeroList(heroQuery: networkService.heroesResult, networkService: networkService)
                 .navigationTitle("Heroes List")
-        }.task {
-            do{
-                print("making request")
-                try await networkService.fetchHeroes()
-            }catch{}
-        }
-        .refreshable {
-            Task{
-                do{
-                    print("making request")
-                    try await networkService.fetchHeroes()
-                }catch{}
-            }
+                .refreshable {
+                    Task{
+                        do{
+                            print("making request")
+                            try await networkService.fetchHeroes()
+                        }catch{}
+                    }
+                }.task {
+                    do{
+                        print("making request")
+                        try await networkService.fetchHeroes()
+                    }catch{}
+                }
         }
     }
 }

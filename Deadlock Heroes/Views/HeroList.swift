@@ -9,10 +9,11 @@ import SwiftUI
 
 struct HeroList: View {
     let heroQuery: HeroQuery
+    let networkService: NetworkService
     var body: some View {
         List(heroQuery.heroes){hero in
             NavigationLink {
-                HeroDetailView(hero: hero)
+                HeroDetailView(hero: hero, networkService: networkService)
             } label: {
                 HeroListRow(hero: hero)
             }
@@ -21,5 +22,5 @@ struct HeroList: View {
 }
 
 #Preview {
-    HeroList(heroQuery: HeroQuery.EXAMPLE_QUERY)
+    HeroList(heroQuery: HeroQuery.EXAMPLE_QUERY, networkService: NetworkService())
 }

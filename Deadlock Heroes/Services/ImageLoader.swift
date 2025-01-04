@@ -10,6 +10,7 @@ import UIKit
 
 
 @Observable
+@MainActor
 class ImageLoader {
     var uiImage: UIImage?
     private var url: URL?
