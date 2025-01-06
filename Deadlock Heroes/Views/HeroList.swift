@@ -8,19 +8,32 @@
 import SwiftUI
 
 struct HeroList: View {
-    let heroQuery: HeroQuery
-    let networkService: NetworkService
+    var viewModel = HeroListViewModel()
     var body: some View {
-        List(heroQuery.heroes){hero in
+        List(viewModel.heroes){hero in
             NavigationLink {
-                HeroDetailView(hero: hero, networkService: networkService)
+                HeroDetailView(hero: hero)
             } label: {
                 HeroListRow(hero: hero)
             }
+        }
+        .navigationTitle("Heroes List")
+        .refreshable {
+            Task{
+                do{
+                    print("making request")
+                    try await viewModel.getHeroes()
+                }catch{}
+            }
+        }.task {
+            do{
+                print("making request")
+                try await viewModel.getHeroes()
+            }catch{}
         }
     }
 }
 
 #Preview {
-    HeroList(heroQuery: HeroQuery.EXAMPLE_QUERY, networkService: NetworkService())
+    HeroList()
 }

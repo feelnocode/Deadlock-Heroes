@@ -9,27 +9,13 @@ import SwiftUI
 
 struct HeroDetailView: View {
     let hero: Hero
-    let networkService: NetworkService
+    var viewModel = HeroDetailViewModel()
     @State private var selectedAbility = HeroAbility.EXAMPLE_ABILITY
     var body: some View {
         NavigationStack{
             ScrollView {
                 VStack{
-                    ZStack(alignment: .bottom){
-                        if let imageUrl = hero.images.heroCard {
-                            CacheImage(url: URL(string: imageUrl))
-                                .frame(width: 350, height: 350)
-                                .clipShape(.rect(cornerRadius: 10))
-                                .shadow(radius: 5)
-                                .padding()
-                        }else{
-                            Image("No_Image_Available")
-                                .resizable()
-                                .frame(width: 350, height: 350)
-                                .clipShape(.rect(cornerRadius: 10))
-                                .padding()
-                        }
-                    }
+                    HeroCardImageComponent(imageUrl: hero.images.heroCard)
                     VStack {
                         HStack{
                             Text("Abilities:")
@@ -38,12 +24,12 @@ struct HeroDetailView: View {
                             Spacer()
                         }
                         
-                        CustomPickerView(pickerWidth: 350, pickerHeight: 60, buttonSelection: networkService.abilitiesResult, selected: $selectedAbility)
+                        CustomPickerView(pickerWidth: 350, pickerHeight: 60, buttonSelection: viewModel.abilities, selected: $selectedAbility)
                             .transaction { transaction in
                                 transaction.animation = .snappy
                             }
                             .shadow(radius: 5)
-                        if !networkService.abilitiesResult.isEmpty{
+                        if !viewModel.abilities.isEmpty{
                             VStack{
                                 ZStack{
                                     RoundedRectangle(cornerRadius: 20)
@@ -100,9 +86,9 @@ struct HeroDetailView: View {
             .toolbarBackground(.ultraThinMaterial)
             .task {
                 do{
-                    try await networkService.fetchAbilities(hero.id)
-                    if networkService.abilitiesResult.first != nil {
-                        selectedAbility = networkService.abilitiesResult.first!
+                    try await viewModel.getAbilities(hero.id)
+                    if viewModel.abilities.first != nil {
+                        selectedAbility = viewModel.abilities.first!
                     }
                 }catch{print(error)}
             }
@@ -111,5 +97,5 @@ struct HeroDetailView: View {
 }
 
 #Preview {
-    HeroDetailView(hero: Hero.EXAMPLE_HERO, networkService: NetworkService())
+    HeroDetailView(hero: Hero.EXAMPLE_HERO)
 }
