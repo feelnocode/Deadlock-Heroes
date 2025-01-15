@@ -14,6 +14,7 @@ class NetworkService {
     static let shared = NetworkService()
     let url = URL(string: "https://assets.deadlock-api.com/v2/heroes?language=english&client_version=5448&only_active=false")
     
+    @MainActor
     func fetchHeroes() async throws -> [Hero]{
         let (data, response) = try await URLSession.shared.data(from: url!)
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {throw APIErrors.invalidResponseCode}
@@ -25,6 +26,8 @@ class NetworkService {
             throw APIErrors.decodingError
         }
     }
+    
+    @MainActor
     func fetchAbilities(_ heroId: Int) async throws -> [HeroAbility]{
         let abilitiesUrl = URL(string: "https://assets.deadlock-api.com/v2/items/by-hero-id/\(heroId)")
         

@@ -32,7 +32,6 @@ class ImageLoader {
         }
         
         if let cachedImage = Self.cache.object(forKey: url.absoluteString as NSString){
-            print("already cached")
             uiImage = cachedImage
         }else{
             let(data, response) = try await URLSession.shared.data(from: url)
@@ -44,7 +43,6 @@ class ImageLoader {
             guard let image = UIImage(data: data) else {
                 throw APIErrors.badImage
             }
-            print("fetching image")
             Self.cache.setObject(image, forKey: url.absoluteString as NSString)
             uiImage = image
         }

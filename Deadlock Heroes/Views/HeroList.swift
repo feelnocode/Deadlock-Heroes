@@ -21,13 +21,11 @@ struct HeroList: View {
         .refreshable {
             Task{
                 do{
-                    print("making request")
                     try await viewModel.getHeroes()
                 }catch{}
             }
         }.task {
             do{
-                print("making request")
                 try await viewModel.getHeroes()
             }catch{}
         }

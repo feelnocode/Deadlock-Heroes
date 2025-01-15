@@ -19,12 +19,4 @@ class HeroListViewModel{
             print(error)
         }
     }
-    
-        init(){
-            print("Hero List Init")
-        }
-    deinit{
-        print("Hero List deInit")
-    }
-    
 }

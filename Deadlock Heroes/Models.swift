@@ -43,10 +43,6 @@ struct HeroAbility: Codable, Identifiable{
     }
 }
 
-//struct HeroAbilitiesQuery: Codable {
-//    var abilities: [HeroAbility]
-//}
-
 
 
 struct HeroQuery: Codable {
