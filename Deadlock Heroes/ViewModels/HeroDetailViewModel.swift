@@ -18,11 +18,4 @@ class HeroDetailViewModel {
             print(error)
         }
     }
-    
-    init(){
-        print("Hero Detail Init")
-    }
-    deinit{
-        print("Hero Detail deInit")
-    }
 }
