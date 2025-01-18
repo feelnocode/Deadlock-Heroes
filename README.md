@@ -25,8 +25,8 @@ An iOS app that showcases a list of heroes from the Deadlock API. Built to demon
 
 ✨ See the app in action:
 
- <img src="todo" alt="screenshot">
- <img src="todo" alt="screenshot">
+ <img src="https://github.com/feelnocode/Deadlock-Heroes/blob/abcfdc7c0d1bd7246fe37646f7fa7d8b63e9b303/demo/demo-screen1.PNG" alt="screenshot">
+ <img src="https://github.com/feelnocode/Deadlock-Heroes/blob/abcfdc7c0d1bd7246fe37646f7fa7d8b63e9b303/demo/demo-screen2.PNG" alt="screenshot">
 
 ---
 
