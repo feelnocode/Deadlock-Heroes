@@ -6,11 +6,21 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		AF8E704A2D3C0FBD0070A550 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AF8E70492D3C0FBD0070A550 /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		AF8E70492D3C0FBD0070A550 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AFEED92F2D25914800B9AA2B /* Deadlock Heroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Deadlock Heroes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		AF8E704B2D3C117D0070A550 /* demo */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = demo;
+			sourceTree = "<group>";
+		};
 		AFEED9312D25914800B9AA2B /* Deadlock Heroes */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Deadlock Heroes";
@@ -32,6 +42,8 @@
 		AFEED9262D25914800B9AA2B = {
 			isa = PBXGroup;
 			children = (
+				AF8E704B2D3C117D0070A550 /* demo */,
+				AF8E70492D3C0FBD0070A550 /* README.md */,
 				AFEED9312D25914800B9AA2B /* Deadlock Heroes */,
 				AFEED9302D25914800B9AA2B /* Products */,
 			);
@@ -61,6 +73,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				AF8E704B2D3C117D0070A550 /* demo */,
 				AFEED9312D25914800B9AA2B /* Deadlock Heroes */,
 			);
 			name = "Deadlock Heroes";
@@ -109,6 +122,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF8E704A2D3C0FBD0070A550 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
