@@ -17,7 +17,7 @@ An iOS app that showcases a list of heroes from the Deadlock API. Built to demon
 - **SwiftUI**: For building intuitive and modern user interfaces.
 - **NSCache**: Custom image caching for optimized performance.
 - **MVVM Architecture**: Ensures clean, scalable, and maintainable code.
-- **Deadlock API (RESTful)**: Serves hero data, including names, descriptions, and images.
+- **Deadlock API (RESTful)**: Serves hero data, including names, descriptions, and abilities.
 
 ---
 
